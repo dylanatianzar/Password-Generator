@@ -12,41 +12,5 @@ ALPHABET_BY_LETTER = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7
                       'e': 40, 'f': 41, 'g': 42, 'h': 43, 'i': 44, 'j': 45, 'k': 46, 'l': 47, 'm': 48, 'n': 49,
                       'o': 50, 'p': 51, 'q': 52, 'r': 53, 's': 54, 't': 55, 'u': 56, 'v': 57, 'w': 58, 'x': 59,
                       'y': 60, 'z': 61, '!': 62, '@': 63, '#': 64}
-alphabet_length = len(ALPHABET_BY_NUM)
-
-
-def word_to_num(password: str):
-    len_of_pass = len(password)
-    word_as_num = 0
-    for i in range(len_of_pass):
-        word_as_num += (ALPHABET_BY_LETTER[password[len_of_pass - 1 - i]]) * (alphabet_length ** i)
-    return word_as_num
-
-
-def num_to_word(num: int):
-    num_as_word = ""
-    while num // alphabet_length != 0:
-        num_as_word += ALPHABET_BY_NUM[num % alphabet_length]
-        num = num//alphabet_length
-    num_as_word += ALPHABET_BY_NUM[num % alphabet_length]
-    return num_as_word[::-1]
-
-
-def convert_fivegram_to_num(fivegrams: list):
-    fivegrams_as_nums = []
-    for i in range(len(fivegrams)):
-        fivegrams_as_nums.append(word_to_num(fivegrams[i]))
-    return fivegrams_as_nums
-
-def convert_num_to_fivegram(fivegram_nums: list):
-    orig_fivegram = []
-    for i in range(len(fivegram_nums)):
-        orig_fivegram.append(num_to_word(fivegram_nums[i]))
-    return orig_fivegram
-
-
-def encrypt(password: str):
-    raise NotImplementedError
-
-def decrypt(password_as_num: int):
-    raise NotImplementedError
+ALPHABET_LENGTH = len(ALPHABET_BY_NUM)
+ALPHABET_CHARACTERS = set(ALPHABET_BY_LETTER.keys())
